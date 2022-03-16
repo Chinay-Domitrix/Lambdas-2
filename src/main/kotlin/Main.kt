@@ -1,7 +1,21 @@
-fun main(args: Array<String>) {
-	println("Hello World!")
+import kotlin.Double.Companion.MAX_VALUE
+import kotlin.Double.Companion.MIN_VALUE
+import kotlin.math.floor
+import kotlin.math.roundToInt
+import kotlin.math.sqrt
+import kotlin.random.Random.Default.nextDouble
+import kotlin.random.Random.Default.nextInt
 
-	// Try adding program arguments via Run/Debug configuration.
-	// Learn more about running applications: https://www.jetbrains.com/help/idea/running-applications.html.
-	println("Program arguments: ${args.joinToString()}")
+fun main() {
+	println(
+		if (PerfectSquares { floor(sqrt(it.toDouble())) == sqrt(it.toDouble()) }.isPerfectSquare(
+				nextInt(
+					2, Int.MAX_VALUE
+				)
+			)
+		) "Yes" else "No"
+	)
+	Quotients { `this`: Double, that: Double ->
+		println(String.format("%f", ((1000 * `this`) / that).roundToInt() / 1000f).substring(0..4))
+	}.quotient(nextDouble(MIN_VALUE, MAX_VALUE), nextDouble(MIN_VALUE, MAX_VALUE))
 }
